@@ -26,7 +26,7 @@ public class Day2 : MonoBehaviour
         day_2();
 
         yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         UnityEditor.EditorApplication.isPlaying = false;
     }
 

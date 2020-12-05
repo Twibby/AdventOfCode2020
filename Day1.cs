@@ -1,8 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Networking;
-
 
 public class Day1 : MonoBehaviour
 {
@@ -10,10 +8,10 @@ public class Day1 : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(coDay1());
+        StartCoroutine(coDay());
     }
 
-    IEnumerator coDay1()
+    IEnumerator coDay()
     {
         yield return StartCoroutine(Tools.Instance.GetInput(Day));
         while (Tools.Instance.Input == "")
@@ -21,18 +19,18 @@ public class Day1 : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        coDay1_1();
+        day_1();
 
         yield return new WaitForEndOfFrame();
 
-        coDay1_2();
+        day_2();
 
         yield return new WaitForEndOfFrame();
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(5f);
         UnityEditor.EditorApplication.isPlaying = false;
     }
 
-    void coDay1_1()
+    void day_1()
     {
         string result = "Not found";
 
@@ -58,7 +56,7 @@ public class Day1 : MonoBehaviour
         Debug.LogWarning(result);
     }
 
-    void coDay1_2()
+    void day_2()
     {
         string result = "Not found";
 
