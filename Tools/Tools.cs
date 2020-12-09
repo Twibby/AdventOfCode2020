@@ -46,7 +46,8 @@ public class Tools : MonoBehaviour
             }
             else
             {
-                _input = webRequest.downloadHandler.text;
+                _input = webRequest.downloadHandler.text.TrimEnd('\n');
+                
                 Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
             }
         }
