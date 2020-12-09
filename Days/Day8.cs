@@ -22,7 +22,7 @@ public class Day8 : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        //day_1();
+        day_1();
 
         yield return new WaitForEndOfFrame();
 
@@ -107,9 +107,7 @@ public class Day8 : MonoBehaviour
         int result = 0;
 
         string[] instructions = Tools.Instance.Input.Split('\n');
-        int safetyCount = 0;
         HashSet<int> readLines = new HashSet<int>();
-        int currentLineIndex = 0;
 
         for (int i = 0; i < instructions.Length; i++)
         {
