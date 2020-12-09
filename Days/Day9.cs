@@ -96,7 +96,6 @@ public class Day9 : MonoBehaviour
         int result = -1;
 
         long[] numbers = Tools.Instance.Input.Split('\n').Select(long.Parse).ToArray();
-        Debug.LogWarning(numbers.Length);
 
         HashSet<long> waitedNumbers = new HashSet<long>();
 
