@@ -27,6 +27,11 @@ public class Tools : MonoBehaviour
 
     public IEnumerator GetInput(int day)
     {
+        yield return GetInput(day.ToString());
+    }
+
+    public IEnumerator GetInput(string day)
+    {
         _input = "";
         string uri = "https://adventofcode.com/2020/day/" + day.ToString() + "/input";
 

@@ -5,7 +5,6 @@ using System.Linq;
 
 public class Day12 : MonoBehaviour
 {
-    public const int Day = 12;
     public bool IsDebug = false;
 
     void Start()
@@ -15,8 +14,9 @@ public class Day12 : MonoBehaviour
 
     IEnumerator coDay()
     {
-        Debug.Log("Day is : " + this.GetType().ToString().Substring(3));
-        yield return StartCoroutine(Tools.Instance.GetInput(Day));
+        Debug.LogWarning("Day is : " + this.GetType().ToString().Substring(3));
+
+        yield return StartCoroutine(Tools.Instance.GetInput(this.GetType().ToString().Substring(3)));
         while (Tools.Instance.Input == "")
         {
             yield return new WaitForEndOfFrame();
