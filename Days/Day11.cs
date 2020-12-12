@@ -6,7 +6,7 @@ using System.Linq;
 public class Day11 : MonoBehaviour
 {
     public const int Day = 11;
-    public bool IsDebug = true;
+    public bool IsDebug = false;
 
     void Start()
     {
