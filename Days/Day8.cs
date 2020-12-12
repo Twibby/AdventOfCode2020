@@ -44,7 +44,7 @@ public class Day8 : MonoBehaviour
 
         while (safetyCount < instructions.Length)
         {
-            Debug.Log("current line is " + currentLineIndex + " -> " + instructions[currentLineIndex]);
+            //Debug.Log("current line is " + currentLineIndex + " -> " + instructions[currentLineIndex]);
 
             if (readLines.Contains(currentLineIndex))
                 break;
