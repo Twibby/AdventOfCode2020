@@ -76,7 +76,9 @@ public class Day18 : MonoBehaviour
 
         foreach (string calcul in inputs)
         {
-            Debug.Log(calcul + "  ==>  " + evaluateExpressionWithPrevalence(calcul));
+            if (IsDebug)
+                Debug.Log(calcul + "  ==>  " + evaluateExpressionWithPrevalence(calcul));
+
             result += evaluateExpressionWithPrevalence(calcul);
         }
 
@@ -91,11 +93,13 @@ public class Day18 : MonoBehaviour
 
         foreach (string calcul in inputs)
         {
-            Debug.Log(calcul + "  ==>  " + altEvaluateExpressionWithPrevalence(calcul));
+            if (IsDebug)
+                Debug.Log(calcul + "  ==>  " + altEvaluateExpressionWithPrevalence(calcul));
+
             result += altEvaluateExpressionWithPrevalence(calcul);
         }
 
-        Debug.LogWarning("[" + this.GetType().ToString() + "] Part 2 result is : " + result.ToString());
+        Debug.LogWarning("[" + this.GetType().ToString() + "] Alt Part 2 result is : " + result.ToString());
     }
 
     long evaluateExpression(string expression)
