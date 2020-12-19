@@ -1,11 +1,8 @@
 ﻿using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections;
+using System;
 
-// UnityWebRequest.Get example
-
-// Access a website and use UnityWebRequest.Get to download a page.
-// Also try to download a non-existing page. Display the error.
 
 public class Tools : MonoBehaviour
 {
@@ -57,4 +54,54 @@ public class Tools : MonoBehaviour
             }
         }
     }
+
+    public IEnumerator GetLeaderoard()
+    {
+        //var textfile = Resources.Load<TextAsset>("lb");
+        //yield return new WaitForEndOfFrame();
+        //_input = textfile.text;
+        //Debug.LogWarning("input : " + _input);
+        //yield break;
+
+
+        _input = "";
+        string uri = "https://adventofcode.com/2020/leaderboard/private/view/" + EasyAccessValues.LeaderboardId + ".json";
+
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            webRequest.SetRequestHeader("Cookie", "session=" + EasyAccessValues.CookieSession);
+
+            // Request and wait for the desired page.
+            yield return webRequest.SendWebRequest();
+
+            string[] pages = uri.Split('/');
+            int page = pages.Length - 1;
+
+            if (webRequest.isNetworkError)
+            {
+                Debug.Log(pages[page] + ": Error: " + webRequest.error);
+            }
+            else
+            {
+                _input = webRequest.downloadHandler.text.TrimEnd('\n');
+
+                Debug.Log(pages[page] + ":\nReceived: " + webRequest.downloadHandler.text);
+            }
+        }
+    }
+
+    public static DateTime ConvertFromUnixTimestamp(double timestamp)
+    {
+        DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        return origin.AddSeconds(timestamp).AddHours(1) ;
+    }
+
+    public static long ConvertToUnixTimestamp(DateTime date)
+    {
+        DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+        TimeSpan diff = date.ToUniversalTime() - origin;
+        return (long)Math.Floor(diff.TotalSeconds);
+    }
+
 }
