@@ -30,20 +30,37 @@ public class Day18 : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
+        float t0 = Time.realtimeSinceStartup;
+        Debug.Log(Time.realtimeSinceStartup);
+
         day_1();
+
+        Debug.Log(Time.realtimeSinceStartup);
+        Debug.Log("Day 1 duration is : " + (Time.realtimeSinceStartup - t0).ToString());
 
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
+
+        t0 = Time.realtimeSinceStartup;
+        Debug.Log(Time.realtimeSinceStartup);
 
         day_2();
 
+        Debug.Log(Time.realtimeSinceStartup);
+        Debug.Log("Day 2 duration is : " + (Time.realtimeSinceStartup - t0).ToString());
+
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
         yield return new WaitForEndOfFrame();
+
+        t0 = Time.realtimeSinceStartup;
+        Debug.Log(Time.realtimeSinceStartup);
 
         alt_Day_2();
 
+        Debug.Log(Time.realtimeSinceStartup);
+        Debug.Log("Day 2ALT duration is : " + (Time.realtimeSinceStartup - t0).ToString());
 
         yield return new WaitForEndOfFrame();
         yield return new WaitForSeconds(5f);
