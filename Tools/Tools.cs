@@ -55,6 +55,24 @@ public class Tools : MonoBehaviour
         }
     }
 
+    public IEnumerator GetTestInput(string uri)
+    {
+        _input = "";
+
+        using (UnityWebRequest webRequest = UnityWebRequest.Get(uri))
+        {
+            yield return webRequest.SendWebRequest();
+
+            if (webRequest.isNetworkError)
+                Debug.LogError("Test input : Error: " + webRequest.error);
+            else
+            {
+                _input = webRequest.downloadHandler.text.TrimEnd('\n');
+                Debug.Log("Test input received: " + webRequest.downloadHandler.text);
+            }
+        }
+    }
+
     public IEnumerator GetLeaderoard()
     {
         //var textfile = Resources.Load<TextAsset>("lb");
@@ -102,6 +120,20 @@ public class Tools : MonoBehaviour
         DateTime origin = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
         TimeSpan diff = date.ToUniversalTime() - origin;
         return (long)Math.Floor(diff.TotalSeconds);
+    }
+
+    public static string writeOffset(int offset)
+    {
+        string log = "";
+        for (int off = 0; off < offset; off++) { log += "|."; }
+        return log;
+    }
+
+    public static string Reverse(string s)
+    {
+        char[] charArray = s.ToCharArray();
+        System.Array.Reverse(charArray);
+        return new string(charArray);
     }
 
 }
