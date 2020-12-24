@@ -10,7 +10,6 @@ public class Day20 : MonoBehaviour
     public bool Part1 = true;
     public bool Part2 = false;
 
-    private string _testInput = "";
     private string _input;
 
     void Start()
